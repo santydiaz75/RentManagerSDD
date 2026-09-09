@@ -41,6 +41,18 @@ RentManagerSDD/
         spec.md                    <-- criterios de aceptacion de la spec activa
         plan.md                    <-- decisiones de arquitectura e implementacion
         tasks.md                   <-- lista de tareas con estado de completitud
+      002-manage-properties/
+        spec.md                    <-- criterios de gestion de propiedades
+        plan.md                    <-- decisiones de gestion de propiedades
+        tasks.md                   <-- tareas de gestion de propiedades
+      003-manage-tenants/
+        spec.md                    <-- criterios de gestion de inquilinos
+        plan.md                    <-- decisiones de gestion de inquilinos
+        tasks.md                   <-- tareas de gestion de inquilinos
+      004-manage-rentals/
+        spec.md                    <-- criterios de gestion de rentas
+        plan.md                    <-- decisiones de gestion de rentas
+        tasks.md                   <-- tareas de gestion de rentas
   app/
     index.html                     <-- punto de entrada de la aplicacion
     css/
@@ -144,6 +156,9 @@ Estados de contrato: `activo` | `pendiente` | `finalizado`
 | `.specify/specs/001-create-foundation/spec.md`  | Criterios de aceptacion de la fundacion        |
 | `.specify/specs/001-create-foundation/plan.md`  | Decisiones de arquitectura e implementacion    |
 | `.specify/specs/001-create-foundation/tasks.md` | Lista de tareas con estado de completitud      |
+| `.specify/specs/002-manage-properties/`         | Spec, plan y tareas de propiedades              |
+| `.specify/specs/003-manage-tenants/`            | Spec, plan y tareas de inquilinos               |
+| `.specify/specs/004-manage-rentals/`            | Spec, plan y tareas de rentas                   |
 | `.github/copilot-instructions.md`            | Reglas de comportamiento del agente Copilot    |
 | `.github/prompts/execute-spec.prompt.md`     | Prompt para ejecutar specs pendientes          |
 | `.github/prompts/sync-agent.prompt.md`       | Prompt para sincronizar este archivo           |
@@ -156,25 +171,33 @@ Estados de contrato: `activo` | `pendiente` | `finalizado`
 
 ## Estado actual de la spec activa
 
-**Spec:** `001-create-foundation` — Estado: `implemented`
+**Specs implementadas:**
 
-Todas las tareas de `tasks.md` estan marcadas como completadas (`[x]`).
-No hay tareas pendientes. La fundacion del proyecto esta implementada.
+- `001-create-foundation` — Estado: `implement`
+- `002-manage-properties` — Estado: `implement`
+- `003-manage-tenants` — Estado: `implement`
+- `004-manage-rentals` — Estado: `implement`
 
-Proxima accion: si se crea una nueva spec, leer su `spec.md`, `plan.md` y `tasks.md` antes de implementar.
+Todas las tareas de las cuatro specs estan marcadas como completadas (`[x]`).
+No hay tareas pendientes en las specs actuales. La fundacion y las tres capacidades de negocio estan implementadas.
+
+Proxima accion: si se crea una nueva spec, identificarla como la de mayor numero y leer su `spec.md`, `plan.md` y `tasks.md` antes de implementar.
 
 ---
 
 ## Ultima sincronizacion
 
-**Fecha:** 2026-05-07
+**Fecha:** 2026-09-09
 
 **Cambios detectados:**
-- `AGENTS.md` no existia: creado desde cero.
-- Spec activa: `001-create-foundation` con estado `implemented` y todas las tareas completadas.
-- Estructura `/app` completa y alineada con la constitucion: 7 paginas HTML, 6 modulos JS, 1 CSS.
+- La base `001-create-foundation` y las specs `002-manage-properties`, `003-manage-tenants` y `004-manage-rentals` estan implementadas.
+- Estructura `/app` alineada con la constitucion: 8 paginas HTML, 6 modulos JS y 1 CSS.
+- `properties.js` incluye CRUD, filtros por estado, validacion centralizada e imagen determinista opcional.
+- `tenants.js` incluye CRUD, busqueda por nombre, validacion de email y unicidad de documento.
+- `rentals.js` incluye registro con `propertyId` y `tenantId`, validacion de fechas y consistencia del estado de propiedad.
+- La navegacion compartida incluye Dashboard, propiedades, inquilinos, nueva propiedad y registro de renta.
 - Carpetas `.github/prompts/` con 2 prompts operativos (`execute-spec`, `sync-agent`).
-- Sin specs adicionales ni tareas pendientes detectadas.
+- Sin tareas pendientes detectadas en las cuatro specs actuales.
 
 **Archivos considerados:**
 - `.github/copilot-instructions.md`
@@ -182,8 +205,11 @@ Proxima accion: si se crea una nueva spec, leer su `spec.md`, `plan.md` y `tasks
 - `.specify/specs/001-create-foundation/spec.md`
 - `.specify/specs/001-create-foundation/plan.md`
 - `.specify/specs/001-create-foundation/tasks.md`
+- `.specify/specs/002-manage-properties/spec.md`, `plan.md`, `tasks.md`
+- `.specify/specs/003-manage-tenants/spec.md`, `plan.md`, `tasks.md`
+- `.specify/specs/004-manage-rentals/spec.md`, `plan.md`, `tasks.md`
 - `app/index.html`, `app/css/styles.css`
 - `app/js/` (app.js, storage.js, ui.js, properties.js, tenants.js, rentals.js)
-- `app/pages/` (7 archivos HTML)
+- `app/pages/` (7 archivos HTML; 8 páginas HTML contando `app/index.html`)
 - `.github/prompts/execute-spec.prompt.md`
 - `.github/prompts/sync-agent.prompt.md`
