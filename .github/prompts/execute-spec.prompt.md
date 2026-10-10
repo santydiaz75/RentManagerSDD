@@ -1,10 +1,11 @@
 ---
 name: execute-spec
-description: Plantilla reutilizable para ejecutar cualquier spec. Solo tienes que cambiar el SPEC_NAME y corre el flujo completo del SDD
+description: Plantilla reutilizable para ejecutar cualquier spec indicando su nombre al invocar el prompt
+argument-hint: Nombre de la spec (por ejemplo, 004-manage-rentals)
 ---
 
 Configuracion
-- SPEC_NAME: 004-manage-rentals
+- SPEC_NAME: ${input:SPEC_NAME}
 
 Regla de resolucion de rutas:
 - SPEC_DIR = .specify/specs/{SPEC_NAME}
@@ -43,4 +44,3 @@ Salida obligatoria al finalizar
 4. Que dentro del archivo {SPEC_FILE} se actualice la seccion de ESTADO para indicar que esta en implement.
 4. Que queda pendiente (si aplica).
 5. Que specs dependientes pueden avanzar gracias a estos cambios.
-

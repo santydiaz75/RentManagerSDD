@@ -28,10 +28,12 @@ No requiere servidor ni proceso de build: se abre directamente desde `app/index.
 ```
 RentManagerSDD/
   AGENTS.md                        <-- este archivo
+  README.md                        <-- descripcion, uso y estructura del proyecto
   .github/
     copilot-instructions.md        <-- reglas del agente Copilot
     prompts/
       execute-spec.prompt.md       <-- prompt para ejecutar specs
+      create-spec.prompt.md        <-- prompt parametrizado para crear specs
       sync-agent.prompt.md         <-- prompt para sincronizar AGENTS.md
   .specify/
     memory/
@@ -53,6 +55,10 @@ RentManagerSDD/
         spec.md                    <-- criterios de gestion de rentas
         plan.md                    <-- decisiones de gestion de rentas
         tasks.md                   <-- tareas de gestion de rentas
+      005-create-README/
+        spec.md                    <-- criterios para documentar el proyecto
+        plan.md                    <-- contenido y secuencia del README
+        tasks.md                   <-- tareas de documentacion
   app/
     index.html                     <-- punto de entrada de la aplicacion
     css/
@@ -159,9 +165,12 @@ Estados de contrato: `activo` | `pendiente` | `finalizado`
 | `.specify/specs/002-manage-properties/`         | Spec, plan y tareas de propiedades              |
 | `.specify/specs/003-manage-tenants/`            | Spec, plan y tareas de inquilinos               |
 | `.specify/specs/004-manage-rentals/`            | Spec, plan y tareas de rentas                   |
+| `.specify/specs/005-create-README/`              | Spec, plan y tareas del README                  |
 | `.github/copilot-instructions.md`            | Reglas de comportamiento del agente Copilot    |
 | `.github/prompts/execute-spec.prompt.md`     | Prompt para ejecutar specs pendientes          |
+| `.github/prompts/create-spec.prompt.md`      | Prompt parametrizado para crear specs          |
 | `.github/prompts/sync-agent.prompt.md`       | Prompt para sincronizar este archivo           |
+| `README.md`                                  | Documentacion general del proyecto             |
 | `app/index.html`                             | Punto de entrada de la aplicacion              |
 | `app/js/storage.js`                          | Unica capa de acceso a localStorage            |
 | `app/js/app.js`                              | Bootstrap y routing entre paginas              |
@@ -177,9 +186,10 @@ Estados de contrato: `activo` | `pendiente` | `finalizado`
 - `002-manage-properties` — Estado: `implement`
 - `003-manage-tenants` — Estado: `implement`
 - `004-manage-rentals` — Estado: `implement`
+- `005-create-README` — Estado: `implement`
 
-Todas las tareas de las cuatro specs estan marcadas como completadas (`[x]`).
-No hay tareas pendientes en las specs actuales. La fundacion y las tres capacidades de negocio estan implementadas.
+Todas las tareas de las cinco specs estan marcadas como completadas (`[x]`).
+No hay tareas pendientes en las specs actuales. La fundacion, las tres capacidades de negocio y la documentacion general estan implementadas.
 
 Proxima accion: si se crea una nueva spec, identificarla como la de mayor numero y leer su `spec.md`, `plan.md` y `tasks.md` antes de implementar.
 
@@ -187,17 +197,18 @@ Proxima accion: si se crea una nueva spec, identificarla como la de mayor numero
 
 ## Ultima sincronizacion
 
-**Fecha:** 2026-09-09
+**Fecha:** 2026-10-10
 
 **Cambios detectados:**
-- La base `001-create-foundation` y las specs `002-manage-properties`, `003-manage-tenants` y `004-manage-rentals` estan implementadas.
+- La base `001-create-foundation`, las specs `002-manage-properties`, `003-manage-tenants`, `004-manage-rentals` y la spec documental `005-create-README` estan implementadas.
 - Estructura `/app` alineada con la constitucion: 8 paginas HTML, 6 modulos JS y 1 CSS.
 - `properties.js` incluye CRUD, filtros por estado, validacion centralizada e imagen determinista opcional.
 - `tenants.js` incluye CRUD, busqueda por nombre, validacion de email y unicidad de documento.
 - `rentals.js` incluye registro con `propertyId` y `tenantId`, validacion de fechas y consistencia del estado de propiedad.
 - La navegacion compartida incluye Dashboard, propiedades, inquilinos, nueva propiedad y registro de renta.
-- Carpetas `.github/prompts/` con 2 prompts operativos (`execute-spec`, `sync-agent`).
-- Sin tareas pendientes detectadas en las cuatro specs actuales.
+- `README.md` en la raiz documenta el proposito, capacidades, apertura local, estructura y restricciones tecnicas del proyecto.
+- Carpeta `.github/prompts/` con 3 prompts operativos (`execute-spec`, `create-spec`, `sync-agent`).
+- Sin tareas pendientes detectadas en las cinco specs actuales.
 
 **Archivos considerados:**
 - `.github/copilot-instructions.md`
@@ -208,8 +219,10 @@ Proxima accion: si se crea una nueva spec, identificarla como la de mayor numero
 - `.specify/specs/002-manage-properties/spec.md`, `plan.md`, `tasks.md`
 - `.specify/specs/003-manage-tenants/spec.md`, `plan.md`, `tasks.md`
 - `.specify/specs/004-manage-rentals/spec.md`, `plan.md`, `tasks.md`
+- `.specify/specs/005-create-README/spec.md`, `plan.md`, `tasks.md`
+- `README.md`
 - `app/index.html`, `app/css/styles.css`
 - `app/js/` (app.js, storage.js, ui.js, properties.js, tenants.js, rentals.js)
 - `app/pages/` (7 archivos HTML; 8 páginas HTML contando `app/index.html`)
-- `.github/prompts/execute-spec.prompt.md`
+- `.github/prompts/execute-spec.prompt.md`, `create-spec.prompt.md`
 - `.github/prompts/sync-agent.prompt.md`
